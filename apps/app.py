@@ -6,7 +6,8 @@ app = FastAPI()
 def home():
     return {
         "message": "Hello from Kubernetes",
-        "day": 2
+        "day": 4,
+        "version": "v2"
     }
 
 @app.get("/health")
