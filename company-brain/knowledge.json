@@ -1,0 +1,12 @@
+[
+  {
+    "id": 1,
+    "title": "Vacation Policy",
+    "content": "Employees receive 25 paid vacation days."
+  },
+  {
+    "id": 2,
+    "title": "Remote Work",
+    "content": "Employees may work remotely 3 days per week."
+  }
+]
