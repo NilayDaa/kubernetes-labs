@@ -38,3 +38,20 @@ spec:
           limits:
             memory: "128Mi"
             cpu: "200m"  
+        env:
+        - name: APP_NAME
+          valueFrom:
+            configMapKeyRef:
+              name: fastapi-config
+              key: APP_NAME
+
+        - name: ENVIRONMENT
+          valueFrom:
+            configMapKeyRef:
+              name: fastapi-config
+              key: ENVIRONMENT
+        - name: DB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: fastapi-secret
+              key: DB_PASSWORD
