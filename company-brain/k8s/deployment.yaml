@@ -33,3 +33,12 @@ spec:
           httpGet:
             path: /health
             port: 8000
+
+        volumeMounts:
+          - name: company-storage
+            mountPath: /data
+      
+      volumes:
+        - name: company-storage
+          persistentVolumeClaim:
+            claimName: company-brain-pvc
