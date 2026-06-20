@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 from sentence_transformers import SentenceTransformer
 import numpy as np
+import os
 
 app = FastAPI()
 
@@ -33,8 +34,8 @@ doc_embeddings = model.encode(doc_texts)
 @app.get("/")
 def home():
     return {
-        "service": "Company Brain AI",
-        "version": "Day 10"
+        "version": os.getenv("APP_VERSION", "Day 10"),
+        "service": os.getenv("SERVICE_NAME", "Company Brain AI")
     }
 
 @app.get("/search")

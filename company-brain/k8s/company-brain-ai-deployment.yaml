@@ -18,9 +18,22 @@ spec:
 
     spec:
       containers:
-      - name: company-brain-ai
-        image: company-brain-ai:v2
-        imagePullPolicy: IfNotPresent
+        - name: company-brain-ai
+          image: company-brain-ai:v3
+          imagePullPolicy: IfNotPresent
 
-        ports:
-        - containerPort: 8000
+          ports:
+          - containerPort: 8000
+
+          env:
+          - name: APP_VERSION
+            valueFrom:
+              configMapKeyRef:
+                name: company-brain-config
+                key: APP_VERSION
+
+          - name: SERVICE_NAME
+            valueFrom:
+              configMapKeyRef:
+                name: company-brain-config
+                key: SERVICE_NAME
