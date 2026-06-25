@@ -4,5 +4,5 @@ metadata:
   name: company-brain-config
 
 data:
-  APP_VERSION: "Day 12"
+  APP_VERSION: "Day 13"
   SERVICE_NAME: "Company Brain AI"

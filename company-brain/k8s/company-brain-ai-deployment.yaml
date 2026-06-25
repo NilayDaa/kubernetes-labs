@@ -19,8 +19,13 @@ spec:
     spec:
       containers:
         - name: company-brain-ai
-          image: company-brain-ai:v3
+          image: company-brain-ai:v4
           imagePullPolicy: IfNotPresent
+
+          volumeMounts:
+            - name: secret-volume
+              mountPath: "/app/secrets"
+              readOnly: true
 
           ports:
           - containerPort: 8000
@@ -37,3 +42,20 @@ spec:
               configMapKeyRef:
                 name: company-brain-config
                 key: SERVICE_NAME
+
+          - name: DB_USER
+            valueFrom:
+              secretKeyRef:
+                name: company-brain-secret
+                key: DB_USER
+
+          - name: DB_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: company-brain-secret
+                key: DB_PASSWORD
+
+      volumes:
+        - name: secret-volume
+          secret:
+            secretName: company-brain-secret

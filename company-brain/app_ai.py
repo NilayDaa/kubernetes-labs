@@ -59,3 +59,24 @@ def search(q: str):
 @app.get("/health")
 def health():
     return {"status": "healthy"}
+
+
+@app.get("/config")
+def config():
+    return {
+        "user": os.getenv("DB_USER"),
+        "password": os.getenv("DB_PASSWORD")
+    }
+
+@app.get("/secret-files")
+def secret_files():
+    with open("/app/secrets/DB_USER", "r") as f:
+        user = f.read().strip()
+
+    with open("/app/secrets/DB_PASSWORD", "r") as f:
+        password = f.read().strip()
+
+    return {
+        "user": user,
+        "password": password
+    }
