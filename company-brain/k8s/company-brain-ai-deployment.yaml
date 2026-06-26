@@ -19,13 +19,17 @@ spec:
     spec:
       containers:
         - name: company-brain-ai
-          image: company-brain-ai:v4
+          image: company-brain-ai:v5
           imagePullPolicy: IfNotPresent
 
           volumeMounts:
             - name: secret-volume
               mountPath: "/app/secrets"
               readOnly: true
+
+          volumeMounts:
+            - name: app-storage
+              mountPath: /app/data
 
           ports:
           - containerPort: 8000
@@ -59,3 +63,8 @@ spec:
         - name: secret-volume
           secret:
             secretName: company-brain-secret
+
+      volumes:
+        - name: app-storage
+          persistentVolumeClaim:
+            claimName: company-brain-pvc

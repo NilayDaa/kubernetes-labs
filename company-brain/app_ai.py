@@ -2,8 +2,11 @@ from fastapi import FastAPI
 from sentence_transformers import SentenceTransformer
 import numpy as np
 import os
+from pathlib import Path
 
 app = FastAPI()
+
+DATA_FILE = "/app/data/visits.txt"
 
 # Load model ONCE (important for performance)
 model = SentenceTransformer("all-MiniLM-L6-v2")
@@ -80,3 +83,20 @@ def secret_files():
         "user": user,
         "password": password
     }
+
+@app.get("/write")
+def write():
+    Path("/app/data").mkdir(parents=True, exist_ok=True)
+
+    with open(DATA_FILE, "a") as f:
+        f.write("Visited\n")
+
+    return {"message": "Written"}
+
+@app.get("/read")
+def read():
+    if not os.path.exists(DATA_FILE):
+        return {"content": ""}
+
+    with open(DATA_FILE) as f:
+        return {"content": f.read()}
