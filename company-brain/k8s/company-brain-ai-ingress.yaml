@@ -20,3 +20,12 @@ spec:
             name: company-brain-ai-service
             port:
               number: 80
+
+      - path: /nginx
+        pathType: Prefix
+
+        backend:
+          service:
+            name: nginx-demo-service
+            port:
+              number: 80
