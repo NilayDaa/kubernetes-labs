@@ -11,4 +11,23 @@ This project is my hands-on journey into cloud-native engineering.
 ## Tech Stack
 - Kubernetes
 - Docker
-- FastAPI (later)
+- FastAPI
+
+
+## Final result
+### Learned
+- FastAPI backend
+- Docker container
+- Kubernetes deployment
+- ConfigMap + Secrets
+- Persistent storage (PVC)
+- Scaling (HPA)
+- Helm packaging
+- GitHub source control
+### Understanding
+✔ Kubernetes architecture
+✔ container orchestration
+✔ CI/CD pipelines
+✔ production deployment flows
+✔ scaling systems
+✔ secrets + config management
